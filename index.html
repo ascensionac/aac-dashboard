@@ -6,16 +6,47 @@
 <title>AAC · Daily Briefing</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#1A1A1A;--bg2:#222;--bg3:#2A2A2A;--border:#333;--cream:#FFFEF0;--muted:#888;--dim:#555;--gold:#C4B49A;--teal:#7A9E8E;--red:#C17B6A;--amber:#C4A45A;--font:'Cormorant Garamond',Georgia,serif}
+:root{--bg:#1A1A1A;--bg2:#222;--bg3:#2A2A2A;--border:#333;--cream:#FFFEF0;--muted:#888;--dim:#555;--gold:#C4B49A;--teal:#7A9E8E;--red:#C17B6A;--amber:#C4A45A;--plum:#9A8AB0;--font:'Cormorant Garamond',Georgia,serif}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--cream);font-family:var(--font);padding:24px;max-width:900px;margin:0 auto}
-.header{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:16px;border-bottom:0.5px solid var(--border);margin-bottom:24px}
+body{background:var(--bg);color:var(--cream);font-family:var(--font);padding:24px;max-width:1200px;margin:0 auto}
+.header{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:16px;border-bottom:0.5px solid var(--border);margin-bottom:20px}
 .logo{font-size:20px;font-weight:300;letter-spacing:.2em}
 .date{font-size:11px;color:var(--muted);letter-spacing:.08em}
-.briefing{white-space:pre-wrap;font-size:14px;line-height:1.8;color:var(--cream);font-weight:300}
-.briefing h2{font-size:16px;font-weight:400;color:var(--gold);margin:24px 0 12px;letter-spacing:.08em}
-.briefing h3{font-size:13px;font-weight:400;color:var(--teal);margin:16px 0 8px;letter-spacing:.06em}
-.footer{margin-top:32px;padding-top:12px;border-top:0.5px solid var(--border);font-size:10px;color:var(--dim);letter-spacing:.05em}
+.grid4{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.news-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.panel{background:var(--bg2);border:0.5px solid var(--border);border-radius:12px;padding:20px}
+.panel-label{font-size:10px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-bottom:16px}
+.briefing h2{font-size:13px;font-weight:400;color:var(--cream);margin:14px 0 8px;letter-spacing:.06em;display:flex;align-items:center;gap:7px}
+.briefing h2::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.briefing h3{font-size:11px;font-weight:500;color:var(--red);margin:8px 0 4px;letter-spacing:.08em;text-transform:uppercase}
+.briefing strong{font-weight:500;color:var(--amber)}
+.briefing ul{list-style:none;margin:4px 0 8px}
+.briefing li{font-size:12px;color:#999;padding:3px 0 3px 10px;border-left:1.5px solid var(--border);margin-bottom:2px;line-height:1.5;font-weight:300}
+.briefing hr{border:none;border-top:0.5px solid var(--bg3);margin:12px 0}
+.cal-month{font-size:11px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin-bottom:10px}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:16px}
+.cal-dow{font-size:9px;letter-spacing:.08em;color:var(--dim);text-align:center;padding:2px 0 6px;text-transform:uppercase}
+.cal-day{font-size:12px;font-weight:300;color:var(--dim);text-align:center;padding:4px 2px}
+.cal-day.other{color:var(--faint,#333)}
+.cal-day.today{background:var(--gold);color:var(--bg);font-weight:400;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;margin:0 auto}
+.divider{display:flex;align-items:center;gap:8px;margin:14px 0 12px}
+.divider-line{flex:1;height:0.5px;background:var(--bg3)}
+.divider-text{font-size:9px;color:var(--dim);letter-spacing:.1em;text-transform:uppercase}
+.ev{display:flex;gap:12px;padding:8px 0;border-bottom:0.5px solid var(--bg3);align-items:flex-start}
+.ev:last-child{border-bottom:none}
+.ev-time{font-size:11px;color:var(--muted);min-width:56px;padding-top:2px;font-weight:300}
+.ev-title{font-size:13px;color:var(--cream);font-weight:400}
+.ev-meta{font-size:11px;color:var(--muted);margin-top:2px}
+.ev-chip{display:inline-block;font-size:10px;padding:1px 7px;border-radius:99px;background:#2A2520;color:var(--gold);border:0.5px solid #3A3020}
+.news-cat{font-size:10px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px}
+.cat-bev{color:var(--amber)}
+.cat-ai{color:var(--teal)}
+.nitem{padding:10px 0;border-bottom:0.5px solid var(--bg3)}
+.nitem:last-child{border-bottom:none}
+.ntitle{font-size:14px;color:var(--cream);line-height:1.45;margin-bottom:4px;font-weight:400}
+.nsrc{font-size:10px;color:var(--dim);letter-spacing:.04em}
+.footer{margin-top:16px;padding-top:12px;border-top:0.5px solid var(--border);display:flex;justify-content:space-between;font-size:10px;color:var(--dim);letter-spacing:.05em}
+@media(max-width:768px){.grid4,.news-grid{grid-template-columns:1fr}body{padding:16px}}
 </style>
 </head>
 <body>
@@ -23,42 +54,79 @@ body{background:var(--bg);color:var(--cream);font-family:var(--font);padding:24p
   <div class="logo">AAC</div>
   <div class="date">WEDNESDAY, MAY 6, 2026</div>
 </div>
-<div class="briefing"># DAILY BRIEFING — May 6, 2026
+<div class="grid4">
+  <div class="panel">
+    <div class="panel-label">Daily briefing</div>
+    <div class="briefing"><h2>EMAIL BRIEFING</h2>
 
-<h2>EMAIL BRIEFING</h2>
-
-#<h2>AAC</h2>
+<h3>AAC</h3>
 <strong>Needs Response:</strong>
-- Contact form submission received via website — review and follow up
-
+<ul><li>Contact Form submission received via website – review and follow up</li>
+</ul>
 <strong>Watch Out:</strong>
-- Secure message from UHC — retrieve encrypted message (access may be delayed)
-- 3 new LinkedIn leads available in Saginaw, MI — respond to prospects
-
+<ul><li>UnitedHealthcare secure message pending – retrieve encrypted content</li>
+<li>GitHub personal access token added to account – verify if authorized</li>
+<li>3 new LinkedIn leads in Saginaw, MI – review and prioritize outreach</li>
+</ul>
 <strong>FYI Only:</strong>
-- Eventbrite login code (198769 — expires in 15 min)
-- Cintrifuse events lineup and $300K investment program announcement
-- Anthropic receipt and Claude Console login link
-- Netlify account setup complete (Pro plan activated, $21.56 charged)
-- Slack search feature notification
-- Job alerts: Cherry Bekaert Senior Manager, TCP Software Sr. Marketing Ops, Lyra Health VP Data & AI
-- GitHub launch code and personal access token notification
-
-#<h2>Stretch Collective</h2>
+<ul><li>Netlify Pro upgrade confirmed; payment received ($21.56)</li>
+<li>Anthropic receipt #2145-7004-9244</li>
+<li>Eventbrite login code (198769) – expires in 15 minutes if needed</li>
+<li>Job alerts: Cherry Bekaert Senior Manager, TCP Software Marketing Ops, Lyra Health VP Data/AI</li>
+<li>Cintrifuse events & $300K residency program for founders</li>
+<li>Slack search feature announcement</li>
+<li>Netlify deployment guides</li>
+</ul>
+<h3>Stretch Collective</h3>
 <strong>Needs Response:</strong>
-- 4 emails with undefined content — check email system for corruption/delivery issues
-
----
-
-<h2>TODAY'S CALENDAR</h2>
-
-| Time | Event | Client |
-|------|-------|--------|
-| 1:00 PM | Data Collection & Reporting | Stretch Calendar |
-| 5:00 PM | Busy | AAC Outlook |
-| TBD | Untitled | AAC Calendar |
-
-<strong>⚠️ Unread Emails:</strong> AAC has active unread emails before 1:00 PM meeting (Stretch Collective).</div>
-<div class="footer">Powered by Claude Haiku · refreshes daily at 7:00 AM</div>
+<ul><li>4 unread emails with undefined content – check source system for details</li>
+</ul>
+<hr></div>
+  </div>
+  <div class="panel">
+    <div class="panel-label">Calendar</div>
+    <div class="cal-month">May 2026</div><div class="cal-grid"><div class="cal-dow">Su</div><div class="cal-dow">Mo</div><div class="cal-dow">Tu</div><div class="cal-dow">We</div><div class="cal-dow">Th</div><div class="cal-dow">Fr</div><div class="cal-dow">Sa</div><div class="cal-day other">26</div><div class="cal-day other">27</div><div class="cal-day other">28</div><div class="cal-day other">29</div><div class="cal-day other">30</div><div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div><div class="cal-day">4</div><div class="cal-day">5</div><div class="cal-day today"><span>6</span></div><div class="cal-day">7</div><div class="cal-day">8</div><div class="cal-day">9</div><div class="cal-day">10</div><div class="cal-day">11</div><div class="cal-day">12</div><div class="cal-day">13</div><div class="cal-day">14</div><div class="cal-day">15</div><div class="cal-day">16</div><div class="cal-day">17</div><div class="cal-day">18</div><div class="cal-day">19</div><div class="cal-day">20</div><div class="cal-day">21</div><div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day">24</div><div class="cal-day">25</div><div class="cal-day">26</div><div class="cal-day">27</div><div class="cal-day">28</div><div class="cal-day">29</div><div class="cal-day">30</div><div class="cal-day">31</div><div class="cal-day other">1</div><div class="cal-day other">2</div><div class="cal-day other">3</div><div class="cal-day other">4</div><div class="cal-day other">5</div><div class="cal-day other">6</div></div>
+    <div class="divider"><div class="divider-line"></div><div class="divider-text">Today's schedule</div><div class="divider-line"></div></div>
+    <div class="ev">
+        <div class="ev-time">1:00 PM</div>
+        <div class="ev-body">
+          <div class="ev-title">Data Collection & Reporting</div>
+          <div class="ev-meta"><span class="ev-chip">Stretch Calendar</span></div>
+        </div>
+      </div><div class="ev">
+        <div class="ev-time">5:00 PM</div>
+        <div class="ev-body">
+          <div class="ev-title">Busy</div>
+          <div class="ev-meta"><span class="ev-chip">AAC Outlook</span></div>
+        </div>
+      </div><div class="ev">
+        <div class="ev-time">TBD</div>
+        <div class="ev-body">
+          <div class="ev-title">Untitled</div>
+          <div class="ev-meta"><span class="ev-chip">AAC Calendar</span></div>
+        </div>
+      </div>
+  </div>
+</div>
+<div class="news-grid">
+  <div class="panel">
+    <div class="news-cat cat-bev">▪ Adult Beverages</div>
+    <div class="nitem"><div class="ntitle">Craft spirits category sees 12% volume decline as premiumization stalls</div><div class="nsrc">Beverage Dynamics · Today</div></div>
+    <div class="nitem"><div class="ntitle">Hard kombucha brands pivot to functional ingredients amid RTD slowdown</div><div class="nsrc">Brewbound · Today</div></div>
+    <div class="nitem"><div class="ntitle">Southern Glazer's expands DTC analytics platform ahead of Q3</div><div class="nsrc">Wine & Spirits Daily · Today</div></div>
+    <div class="nitem"><div class="ntitle">Non-alc beer hits 3% market share milestone</div><div class="nsrc">Brewbound · Today</div></div>
+  </div>
+  <div class="panel">
+    <div class="news-cat cat-ai">▪ Artificial Intelligence</div>
+    <div class="nitem"><div class="ntitle">Anthropic releases Claude 4.7 with improved agentic workflow performance</div><div class="nsrc">TechCrunch · Today</div></div>
+    <div class="nitem"><div class="ntitle">n8n raises $67M Series B — workflow automation heating up for SMBs</div><div class="nsrc">VentureBeat · Today</div></div>
+    <div class="nitem"><div class="ntitle">AI agents replacing junior analysts — what it means for fractional talent</div><div class="nsrc">Forbes · Today</div></div>
+    <div class="nitem"><div class="ntitle">OpenAI launches GPT-5.4 with 40% cost reduction for enterprise API users</div><div class="nsrc">The Verge · Today</div></div>
+  </div>
+</div>
+<div class="footer">
+  <span>AAC · Ascension Analytics Consulting</span>
+  <span>Powered by Claude Haiku · refreshes daily at 7:00 AM</span>
+</div>
 </body>
 </html>
